@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "4550b34e-64a2-4117-9590-f6d4cf7a66f7": {
+      "ProjectGuid": "4550b34e-64a2-4117-9590-f6d4cf7a66f7",
+      "DisplayName": "AwesomeShop.Services.Notifications",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
