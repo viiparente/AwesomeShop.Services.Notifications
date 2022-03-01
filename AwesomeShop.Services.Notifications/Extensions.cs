@@ -1,4 +1,5 @@
 ﻿using AwesomeShop.Services.Notifications.Api.Infrastructure.Persistence;
+using AwesomeShop.Services.Notifications.Infrastructure.Persistence.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson;
@@ -8,6 +9,13 @@ namespace AwesomeShop.Services.Notifications
 {
     public static class Extensions
     {
+        public static IServiceCollection AddRepositories(this IServiceCollection services)
+        {
+            services.AddScoped<IMailRepository, MailRepository>();
+
+            return services;
+        }
+
         public static IServiceCollection AddMongo(this IServiceCollection services)
         {
             services.AddSingleton(sp => {
