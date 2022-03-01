@@ -26,6 +26,8 @@ namespace AwesomeShop.Services.Notifications
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services
+                .AddMongo();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
@@ -43,8 +45,6 @@ namespace AwesomeShop.Services.Notifications
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AwesomeShop.Services.Notifications v1"));
             }
-
-            app.UseHttpsRedirection();
 
             app.UseRouting();
 
