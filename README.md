@@ -1,3 +1,5 @@
+![example workflow](https://github.com/viiparente/AwesomeShop.Services.Notifications/actions/workflows/build.yml/badge.svg)
+
 # AwesomeShop.Services.Notifications - Formação Microsserviços com ASP.NET Core
 
 A arquitetura do AwesomeShop, sistema de e-commerce baseado na arquitetura de microsserviços, contém 6 microsserviços:
