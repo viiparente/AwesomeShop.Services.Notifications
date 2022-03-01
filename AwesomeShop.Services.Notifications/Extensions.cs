@@ -1,9 +1,11 @@
 ﻿using AwesomeShop.Services.Notifications.Api.Infrastructure.Persistence;
 using AwesomeShop.Services.Notifications.Infrastructure.Persistence.Repositories;
+using AwesomeShop.Services.Notifications.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using SendGrid.Extensions.DependencyInjection;
 
 namespace AwesomeShop.Services.Notifications
 {
@@ -41,6 +43,20 @@ namespace AwesomeShop.Services.Notifications
 
                 return mongoClient.GetDatabase(options.Database);
             });
+
+            return services;
+        }
+        public static IServiceCollection AddMailService(this IServiceCollection services, IConfiguration configuration)
+        {
+            var config = new MailConfig();
+
+            configuration.GetSection("Notifications").Bind(config);
+
+            services.AddSingleton<MailConfig>(m => config);
+
+            services.AddSendGrid(sp => sp.ApiKey = config.SendGridApiKey);
+
+            services.AddTransient<INotificationService, NotificationService>();
 
             return services;
         }
