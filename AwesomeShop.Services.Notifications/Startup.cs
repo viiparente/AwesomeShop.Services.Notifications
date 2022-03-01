@@ -29,7 +29,8 @@ namespace AwesomeShop.Services.Notifications
             services
                 .AddMongo()
                 .AddRepositories()
-                .AddMailService(Configuration);
+                .AddMailService(Configuration)
+                .AddSubscribers();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

@@ -1,6 +1,7 @@
 ﻿using AwesomeShop.Services.Notifications.Api.Infrastructure.Persistence;
 using AwesomeShop.Services.Notifications.Infrastructure.Persistence.Repositories;
 using AwesomeShop.Services.Notifications.Infrastructure.Services;
+using AwesomeShop.Services.Notifications.Subscribers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Bson;
@@ -57,6 +58,14 @@ namespace AwesomeShop.Services.Notifications
             services.AddSendGrid(sp => sp.ApiKey = config.SendGridApiKey);
 
             services.AddTransient<INotificationService, NotificationService>();
+
+            return services;
+        }
+        public static IServiceCollection AddSubscribers(this IServiceCollection services)
+        {
+            services.AddHostedService<CustomerCreatedSubscriber>();
+            services.AddHostedService<OrderCreatedSubscriber>();
+            services.AddHostedService<PaymentAcceptedSubscriber>();
 
             return services;
         }

@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[2.14.1, )"
             },
+            "RabbitMQ.Client": {
+              "target": "Package",
+              "version": "[6.2.4, )"
+            },
             "SendGrid.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[1.0.1, )"
